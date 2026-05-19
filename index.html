@@ -9,459 +9,72 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #050816;
-  color: white;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at top, rgba(42,97,255,.16), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(255,80,80,.10), transparent 30%);
-  z-index: -1;
-  pointer-events: none;
-}
-
-.fireworks {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.spark {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: white;
-  border-radius: 50%;
-  opacity: .5;
-  animation: float 8s linear infinite;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: #050816; color: white; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(circle at top, rgba(42,97,255,.18), transparent 35%), radial-gradient(circle at bottom right, rgba(255,80,80,.14), transparent 30%); z-index: -1; pointer-events: none; }
+.fireworks { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.spark { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; opacity: .5; animation: float 8s linear infinite; }
 .spark:nth-child(1) { left: 10%; top: 90%; animation-delay: 0s; }
 .spark:nth-child(2) { left: 20%; top: 100%; animation-delay: 2s; }
 .spark:nth-child(3) { left: 35%; top: 95%; animation-delay: 1s; }
 .spark:nth-child(4) { left: 55%; top: 100%; animation-delay: 3s; }
 .spark:nth-child(5) { left: 72%; top: 92%; animation-delay: 4s; }
 .spark:nth-child(6) { left: 88%; top: 100%; animation-delay: 2s; }
-
-@keyframes float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
-  10% {
-    opacity: .8;
-  }
-  100% {
-    transform: translateY(-110vh) scale(1.8);
-    opacity: 0;
-  }
-}
-
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 36px 20px 80px;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(5,8,22,.45), rgba(5,8,22,.96)),
-    url('Fireworks2.jpg') center center/cover;
-  filter: brightness(.9);
-  transform: scale(1.03);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 760px;
-}
-
-.status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(24,201,142,.14);
-  border: 1px solid rgba(24,201,142,.35);
-  color: #7fffd4;
-  font-weight: 700;
-  margin-bottom: 26px;
-  backdrop-filter: blur(12px);
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(3.5rem, 16vw, 6rem);
-  line-height: .9;
-  letter-spacing: -3px;
-  text-shadow: 0 15px 50px rgba(0,0,0,.45);
-}
-
-.subtitle {
-  margin: 26px auto 0;
-  color: rgba(255,255,255,.88);
-  line-height: 1.8;
-  font-size: 1.08rem;
-}
-
-.countdown {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.count-card {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.1);
-  backdrop-filter: blur(14px);
-  border-radius: 22px;
-  padding: 18px 10px;
-}
-
-.count-card span {
-  display: block;
-}
-
-.count-number {
-  font-size: 2rem;
-  font-weight: 800;
-}
-
-.count-label {
-  font-size: .7rem;
-  opacity: .7;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.glass {
-  margin-top: 34px;
-  background: rgba(255,255,255,.08);
-  border-radius: 28px;
-  border: 1px solid rgba(255,255,255,.08);
-  backdrop-filter: blur(18px);
-  padding: 22px;
-  text-align: left;
-}
-
-.grid {
-  display: grid;
-  gap: 14px;
-}
-
-.card {
-  background: rgba(255,255,255,.04);
-  border-radius: 20px;
-  padding: 18px;
-}
-
-.card h3 {
-  margin-top: 0;
-  margin-bottom: 8px;
-  color: #8eb6ff;
-  text-transform: uppercase;
-  font-size: .78rem;
-  letter-spacing: 1.2px;
-}
-
-.section {
-  padding: 80px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: clamp(2rem, 8vw, 4rem);
-  letter-spacing: -1px;
-}
-
-.muted {
-  color: rgba(255,255,255,.7);
-  line-height: 1.9;
-}
-
-.split {
-  display: grid;
-  gap: 28px;
-  margin-top: 40px;
-}
-
-.feature-image {
-  overflow: hidden;
-  border-radius: 28px;
-  box-shadow: 0 30px 70px rgba(0,0,0,.45);
-}
-
-.feature-image img {
-  width: 100%;
-  display: block;
-}
-
-.notes {
-  display: grid;
-  gap: 16px;
-}
-
-.note {
-  padding: 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.05);
-}
-
-.note h3 {
-  margin-top: 0;
-}
-
-.map-image {
-  margin-top: 36px;
-  overflow: hidden;
-  border-radius: 28px;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 25px 60px rgba(0,0,0,.4);
-}
-
-.map-image img {
-  width: 100%;
-  display: block;
-}
-
-.support {
-  margin-top: 60px;
-  padding: 24px;
-  border-radius: 24px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.06);
-  text-align: center;
-}
-
-.support a {
-  color: white;
-  opacity: .9;
-}
-
-footer {
-  padding: 40px 20px 70px;
-  text-align: center;
-  color: rgba(255,255,255,.5);
-  font-size: .95rem;
-}
-
-@media (min-width: 850px) {
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .split {
-    grid-template-columns: 1.15fr .85fr;
-    align-items: center;
-  }
-
-  .countdown {
-    gap: 16px;
-  }
-
-  .count-card {
-    padding: 24px 14px;
-  }
-
-  .count-number {
-    font-size: 2.8rem;
-  }
-}
+@keyframes float { 0% { transform: translateY(0) scale(1); opacity: 0; } 10% { opacity: .8; } 100% { transform: translateY(-110vh) scale(1.8); opacity: 0; } }
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 36px 20px 80px; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,8,22,.18), rgba(5,8,22,.72)), url('valleyfireworks.png') center center/cover; filter: brightness(.98) saturate(1.28) contrast(1.08); transform: scale(1.03); }
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: 760px; }
+.status { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; background: rgba(24,201,142,.14); border: 1px solid rgba(24,201,142,.35); color: #7fffd4; font-weight: 700; margin-bottom: 26px; backdrop-filter: blur(12px); }
+h1 { margin: 0; font-size: clamp(3.5rem, 16vw, 6rem); line-height: .9; letter-spacing: -3px; text-shadow: 0 15px 50px rgba(0,0,0,.55); }
+.subtitle { margin: 26px auto 0; color: rgba(255,255,255,.92); line-height: 1.8; font-size: 1.08rem; text-shadow: 0 4px 18px rgba(0,0,0,.45); }
+.countdown { margin-top: 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.count-card { background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(14px); border-radius: 22px; padding: 18px 10px; }
+.count-card span { display: block; }
+.count-number { font-size: 2rem; font-weight: 800; }
+.count-label { font-size: .7rem; opacity: .75; text-transform: uppercase; letter-spacing: 1px; }
+.glass { margin-top: 34px; background: rgba(255,255,255,.09); border-radius: 28px; border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(18px); padding: 22px; text-align: left; }
+.grid { display: grid; gap: 14px; }
+.card { background: rgba(255,255,255,.05); border-radius: 20px; padding: 18px; }
+.card h3 { margin-top: 0; margin-bottom: 8px; color: #a9c7ff; text-transform: uppercase; font-size: .78rem; letter-spacing: 1.2px; }
+.section { padding: 80px 20px; position: relative; z-index: 2; }
+.container { max-width: 1100px; margin: 0 auto; }
+h2 { margin-top: 0; margin-bottom: 10px; font-size: clamp(2rem, 8vw, 4rem); letter-spacing: -1px; }
+.muted { color: rgba(255,255,255,.7); line-height: 1.9; }
+.split { display: grid; gap: 28px; margin-top: 40px; }
+.feature-image { overflow: hidden; border-radius: 28px; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+.feature-image img { width: 100%; display: block; }
+.notes { display: grid; gap: 16px; }
+.note { padding: 22px; border-radius: 22px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.05); }
+.note h3 { margin-top: 0; }
+.map-image { margin-top: 36px; overflow: hidden; border-radius: 28px; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 25px 60px rgba(0,0,0,.4); }
+.map-image img { width: 100%; display: block; }
+.support { margin-top: 60px; padding: 24px; border-radius: 24px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); text-align: center; }
+.support a { color: white; opacity: .9; }
+footer { padding: 40px 20px 70px; text-align: center; color: rgba(255,255,255,.5); font-size: .95rem; }
+@media (min-width: 850px) { .grid { grid-template-columns: repeat(2, 1fr); } .split { grid-template-columns: 1.15fr .85fr; align-items: center; } .countdown { gap: 16px; } .count-card { padding: 24px 14px; } .count-number { font-size: 2.8rem; } }
 </style>
 </head>
 <body>
-
-<div class="fireworks">
-  <div class="spark"></div>
-  <div class="spark"></div>
-  <div class="spark"></div>
-  <div class="spark"></div>
-  <div class="spark"></div>
-  <div class="spark"></div>
-</div>
-
-<section class="hero">
-  <div class="hero-content">
-
-    <div class="status">🎆 SHOW CURRENTLY ON AS PLANNED</div>
-
-    <h1>Fireworks<br>On The Farm</h1>
-
-    <p class="subtitle">
-      July 3rd • After Sundown • Approximately 10 PM<br><br>
-      Bring your own chairs, blankets, food, and drinks and join us for a relaxed evening on the farm.
-      This page is the official location for weather updates and any changes to the gathering.
-    </p>
-
-    <div class="countdown">
-      <div class="count-card">
-        <span class="count-number" id="days">--</span>
-        <span class="count-label">Days</span>
-      </div>
-
-      <div class="count-card">
-        <span class="count-number" id="hours">--</span>
-        <span class="count-label">Hours</span>
-      </div>
-
-      <div class="count-card">
-        <span class="count-number" id="minutes">--</span>
-        <span class="count-label">Minutes</span>
-      </div>
-
-      <div class="count-card">
-        <span class="count-number" id="seconds">--</span>
-        <span class="count-label">Seconds</span>
-      </div>
-    </div>
-
-    <div class="glass">
-      <div class="grid">
-
-        <div class="card">
-          <h3>Bring Your Own Setup</h3>
-          <p>Chairs, blankets, coolers, snacks, and picnic setups are all welcome.</p>
-        </div>
-
-        <div class="card">
-          <h3>Parking & Viewing Areas</h3>
-          <p>Please use the designated parking locations shown below.</p>
-        </div>
-
-        <div class="card">
-          <h3>Check Back Before Heading Out</h3>
-          <p>This page will always contain the latest weather updates or schedule changes.</p>
-        </div>
-
-        <div class="card">
-          <h3>Friends & Family Welcome</h3>
-          <p>Feel free to bring a few others with you within reason.</p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
-    <h2>Gathering Details</h2>
-
-    <p class="muted">
-      We’re simply opening up the property and making the fireworks show available to friends, family, and the community for the evening.
-    </p>
-
-    <div class="split">
-
-      <div class="feature-image">
-        <img src="Guests2.JPG" alt="Guests watching fireworks">
-      </div>
-
-      <div class="notes">
-
-        <div class="note">
-          <h3>Arrival Timing</h3>
-          <p>Feel free to arrive early, settle in, and enjoy the evening before the fireworks begin after sundown.</p>
-        </div>
-
-        <div class="note">
-          <h3>Viewing Area</h3>
-          <p>The best viewing area is marked on the farm map below.</p>
-        </div>
-
-        <div class="note">
-          <h3>Weather Updates</h3>
-          <p>If weather forces a delay or reschedule, this page will be updated accordingly.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="map-image">
-      <img src="Farm Map.png" alt="Farm parking and viewing map">
-    </div>
-
-    <div class="support">
-      <p>
-        Pulling together a fireworks show like this is a sizable investment. If you'd like to help offset a bit of the cost, contributions are appreciated but never expected.
-      </p>
-
-      <p>
-        <a href="https://venmo.com" target="_blank">Contribute via Venmo</a>
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  Fireworks On The Farm • Check this page before heading out for updates or weather-related changes.
-</footer>
-
+<div class="fireworks"><div class="spark"></div><div class="spark"></div><div class="spark"></div><div class="spark"></div><div class="spark"></div><div class="spark"></div></div>
+<section class="hero"><div class="hero-content"><div class="status">🎆 SHOW CURRENTLY ON AS PLANNED</div><h1>Fireworks<br>On The Farm</h1><p class="subtitle">July 3rd • After Sundown • Approximately 10 PM<br><br>Bring your own chairs, blankets, food, and drinks and join us for a relaxed evening on the farm. This page is the official location for weather updates and any changes to the gathering.</p><div class="countdown"><div class="count-card"><span class="count-number" id="days">--</span><span class="count-label">Days</span></div><div class="count-card"><span class="count-number" id="hours">--</span><span class="count-label">Hours</span></div><div class="count-card"><span class="count-number" id="minutes">--</span><span class="count-label">Minutes</span></div><div class="count-card"><span class="count-number" id="seconds">--</span><span class="count-label">Seconds</span></div></div><div class="glass"><div class="grid"><div class="card"><h3>Bring Your Own Setup</h3><p>Chairs, blankets, coolers, snacks, and picnic setups are all welcome.</p></div><div class="card"><h3>Parking & Viewing Areas</h3><p>Please use the designated parking locations shown below.</p></div><div class="card"><h3>Check Back Before Heading Out</h3><p>This page will always contain the latest weather updates or schedule changes.</p></div><div class="card"><h3>Friends & Family Welcome</h3><p>Feel free to bring a few others with you within reason.</p></div></div></div></div></section>
+<section class="section"><div class="container"><h2>Gathering Details</h2><p class="muted">We’re simply opening up the property and making the fireworks show available to friends, family, and the community for the evening.</p><div class="split"><div class="feature-image"><img src="Guests2.JPG" alt="Guests watching fireworks"></div><div class="notes"><div class="note"><h3>Arrival Timing</h3><p>Feel free to arrive early, settle in, and enjoy the evening before the fireworks begin after sundown.</p></div><div class="note"><h3>Viewing Area</h3><p>The best viewing area is marked on the farm map below.</p></div><div class="note"><h3>Weather Updates</h3><p>If weather forces a delay or reschedule, this page will be updated accordingly.</p></div></div></div><div class="map-image"><img src="FarmMap.png" alt="Farm parking and viewing map"></div><div class="support"><p>Pulling together a fireworks show like this is a sizable investment. If you'd like to help offset a bit of the cost, contributions are appreciated but never expected.</p><p><a href="https://venmo.com" target="_blank">Contribute via Venmo</a></p></div></div></section>
+<footer>Fireworks On The Farm • Check this page before heading out for updates or weather-related changes.</footer>
 <script>
 const targetDate = new Date('2026-07-03T22:00:00').getTime();
-
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate - now;
-
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById('days').innerText = days;
-  document.getElementById('hours').innerText = hours;
-  document.getElementById('minutes').innerText = minutes;
-  document.getElementById('seconds').innerText = seconds;
+  document.getElementById('days').innerText = Math.max(days, 0);
+  document.getElementById('hours').innerText = Math.max(hours, 0);
+  document.getElementById('minutes').innerText = Math.max(minutes, 0);
+  document.getElementById('seconds').innerText = Math.max(seconds, 0);
 }
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
+setInterval(updateCountdown, 1000); updateCountdown();
 </script>
-
 </body>
 </html>
